@@ -1,0 +1,99 @@
+.flex {
+	display: flex;
+}
+.wrap {
+	flex-wrap: wrap;
+}
+.justify {
+	&-center { justify-content: center;}
+	&-start { justify-content: flex-start;}
+	&-end { justify-content: flex-end;}
+	&-space-around { justify-content: space-around;}
+	&-space-between { justify-content: space-between;}
+}
+.align {
+	&-center {align-items: center;}
+	&-flex-start {align-items: flex-start;}
+	&-flex-end {align-items: flex-end;}
+}
+
+.board {
+	padding: 20px 40px 0;
+	height: 100%;
+	@extend .clearAfter;
+	@extend .flex;
+	@extend .justify-space-between;
+
+	.boardColumns {
+		padding: 0 16px;
+	}
+}
+
+// Last Fixed Column In Board 
+.summary {
+	position: relative;
+
+	.currentStats {
+		width: 270px;
+		background-color: #fff;
+		border: 1px solid $border;
+		border-radius: 4px;
+		padding: 15px 25px;
+	}
+
+	.summaryList {
+		margin-top: 10px;
+		border-radius: 4px;
+		background-color: #ccd3da;
+
+		.accordionHeader {
+			padding: 0 20px; 
+			height: 40px;
+			position: relative;
+
+			.dropIcon {
+				top: 13px;
+			}
+		}
+
+		.accordionBody {
+			padding: 20px; 
+			border-top: 1px solid #fff;
+
+			.list {
+				li {
+					margin: 8px 0;
+					font-weight: 200;
+
+					.subList {
+						padding-left: 20px;
+						font-size: 12px;
+					}
+				}
+			}
+		}
+	}
+
+	.summaryMeta {
+		position: absolute;
+		bottom: 0px;
+
+		.metaLogo {
+			text-align: center;
+
+			a {
+				display: inline-block;
+				@include transition(all 0.2s);
+
+				img {
+					width: 95px;
+					margin-top: 22px;
+				}
+
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+		}
+	}
+}

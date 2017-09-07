@@ -1,0 +1,39 @@
+// Buttons 
+
+.btn {
+	display: inline-block;
+	padding: 0px 23px;
+	height: 36px;
+    line-height: 34px;
+    text-align: center;
+	color: #fff;
+	font-size: $fontSize;
+	border-width: 1px;
+	border-style: solid;
+	border-color: transparent;
+	border-radius: 4px;
+	cursor: pointer;
+	background-color: transparent;
+	@include transition(all 0.2s);
+
+	&.smallPadd {
+		padding: 0 16px;
+	}
+
+	&:hover {
+		opacity: .9;
+	}
+
+	&.blue {
+		border-color: $blue;
+		@include linearGradient(#2ea1f8, #1991eb);
+	}
+	&.green {
+		border-color: $green;
+		@include linearGradient(#39b54a, #33aa44);
+	}
+	&.grey {
+		border-color: #ccd4dc;
+		@include linearGradient(#ccd4dc, #c0c4c8);
+	}
+}

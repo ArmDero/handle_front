@@ -1,0 +1,11 @@
+<app-main-kitchen-header></app-main-kitchen-header>
+
+<section class="content board">
+  <div class="boardColumns" *ngFor="let table of tables">
+    <app-main-kitchen-order [table]="table"></app-main-kitchen-order>
+  </div>
+
+  <div class="boardColumns summary">
+    <app-main-kitchen-sidebar></app-main-kitchen-sidebar>
+  </div>
+</section>

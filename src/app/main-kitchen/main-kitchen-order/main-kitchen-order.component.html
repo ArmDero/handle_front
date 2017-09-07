@@ -1,0 +1,51 @@
+<div class="order green">
+
+  <div class="orderHeader flex justify-space-between">
+    <span class="name">{{table.name}}</span>
+    <span class="capitalize">{{table.type}}</span>
+    <span>{{table.time}}</span>
+  </div>
+
+  <div class="orderBody">
+    <div class="accordionList" *ngFor="let orderType of table.orderTypes">
+
+      <!-- Dropdown Header -->
+      <a class="flex justify-space-between align-center toggle">
+                      <span class="itemName">{{orderType.title}} (2/2)</span>
+                      <span class="itemStatus">
+                        <i class="cirle red"></i>
+                        <span class="uppercase">done</span>
+                      </span>
+                      <i class="dropIcon fa fa-angle-down" aria-hidden="true"></i>
+      </a>
+
+      <!-- Dropdown Body -->
+      <div class="accordionBody dropdown">
+        <ul class="list">
+          <li [ngClass]="getClasses(order)" *ngFor="let order of orderType.orders" (click)="cook(order)">
+            <span>
+              <span *ngIf="!order.needTiming && order.ready">-</span>
+            <i class="icon-time blue" *ngIf="order.needTiming && !order.ready"></i>
+            <span class="text red" *ngIf="order.needTiming && order.ready">{{order.timer | counter}}</span> {{order.name}}
+            </span>
+            <i class="fa fa-check-circle" aria-hidden="true" *ngIf="order.done; else delete"></i>
+            <ng-template #delete>
+              <i class="icon-delete" aria-hidden="true"></i>
+            </ng-template>
+            <ul class="subList font-xs" *ngIf="order.subOrders">
+              <li *ngFor="let subOrder of order.subOrders" [class.done]="order.done">{{subOrder.name}}</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <app-order-meta-bar [table]="table"></app-order-meta-bar>
+
+    <div class="metaBtns flex justify-space-between align-center">
+      <button class="btn grey smallPadd">1</button>
+      <button class="btn blue smallPadd">Snooze</button>
+      <button class="btn green smallPadd">Done</button>
+    </div>
+  </div>
+</div>
